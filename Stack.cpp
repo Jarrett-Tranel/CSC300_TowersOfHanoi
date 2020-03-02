@@ -24,13 +24,21 @@ void Stack::push(int payload)
 
 int Stack::pop()
 {
-    int valueToReturn = this->top->getPayload();
-    Node* temp = this->top;
-    top = top->getNextNode();
-    temp->setNextNode(0);
-    delete temp;
-    this->elements--;
-    return valueToReturn;
+    if(this->elements > 0)
+    {
+        int valueToReturn = this->top->getPayload();
+        Node* temp = this->top;
+        top = top->getNextNode();
+        temp->setNextNode(0);
+        delete temp;
+        this->elements--;
+        return valueToReturn;
+    }
+    else
+    {
+        std::cout<<"Cannot remove from empty stack.";
+    }
+    return 0;
 }
 
 int Stack::peek()
@@ -40,13 +48,29 @@ int Stack::peek()
 
 void Stack::moveTo(Stack* destination)
 {
-    int hold =this->pop();
-    //this->display();
-    //std::cout<<hold;
-    destination->push(hold);
-
+    if(this->elements == 0)
+    {
+        std::cout<<"Cannot remove from empty stack.";
+        return;
+    }
+    if(destination->elements > 0)
+    {
+        if(this->peek() < destination->peek())
+        {
+            int hold =this->pop();
+            destination->push(hold);
+        }
+        else
+        {
+            std::cout<<"Invalid Move: Disks can only be placed on top of larger disks.\n";
+        }
+    }
+    else
+    {
+        int hold =this->pop();
+        destination->push(hold);
+    }
 }
-
 void Stack::translateDisk(int payload)
 {
     if(payload == 1)
@@ -69,8 +93,18 @@ void Stack::translateDisk(int payload)
 
 bool Stack::isWin()
 {
-    return false;
+    if(this->elements == 3)
+    {
+        std::cout<<"You Have won!\n";
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
 }
+
 
 void Stack::displayTextual()
 {

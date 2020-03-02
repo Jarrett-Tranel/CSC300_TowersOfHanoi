@@ -4,6 +4,7 @@ class Stack
     private:
         Node* top;
         int elements;
+        void translateDisk(int payload);
 
     public:
         Stack();
@@ -12,8 +13,6 @@ class Stack
         int peek();
         bool isWin();
         void moveTo(Stack* to);
-        void translateDisk(int payload);
         void displayTextual();
         void display();
-
 };
