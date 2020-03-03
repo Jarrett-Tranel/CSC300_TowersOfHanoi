@@ -3,14 +3,7 @@
 
 int main()
 {
-    /*
-    Stack* theStack = new Stack();
-    theStack->push(5);
-    theStack->push(2);
-    theStack->push(3);
-    std::cout <<theStack->peek();
-    theStack->display();
-    */
+    
     Stack* firstTower = new Stack();
     Stack* secondTower = new Stack();
     Stack* thirdTower = new Stack();

@@ -75,15 +75,15 @@ void Stack::translateDisk(int payload)
 {
     if(payload == 1)
     {
-        std::cout<<"   $\n";
+        std::cout<<"   =\n";
     }
     else if(payload == 2)
     {
-        std::cout<<"  $ $\n";
+        std::cout<<"  = =\n";
     }
     else if(payload == 3)
     {
-        std::cout<<" $ $ $\n";
+        std::cout<<" = = =\n";
     }
     else
     {
